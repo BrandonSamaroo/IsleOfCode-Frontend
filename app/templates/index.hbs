@@ -1,0 +1,22 @@
+{{page-title "All Content"}}
+
+<main class="container mt-5">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Date Posted</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.model as |content index|}}
+        <tr>
+            <th scope="row">{{content.created_at}}</th>
+            <td><LinkTo @route="content" @model={{content.id}}>{{content.description}}</LinkTo></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</main>
+
+{{outlet}}
