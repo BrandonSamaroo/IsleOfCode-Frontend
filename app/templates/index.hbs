@@ -6,17 +6,32 @@
       <tr>
         <th scope="col">Date Posted</th>
         <th scope="col">Description</th>
+        <th scope="col">More Info</th>
       </tr>
     </thead>
     <tbody>
       {{#each this.model as |content index|}}
         <tr>
-            <th scope="row">{{content.created_at}}</th>
+            <th scope="row">{{date content.created_at}}</th>
             <td><LinkTo @route="content" @model={{content.id}}>{{content.description}}</LinkTo></td>
+            <td><button type="button" onclick={{action "changeInfo" content.id}} class="btn btn-info">Show Title?</button></td>
         </tr>
       {{/each}}
     </tbody>
   </table>
+</main>
+
+
+
+<main class="container mt-5">
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>{{this.info.content_title}}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      {{this.info.publishing_user}}
+    </figcaption>
+  </figure>
 </main>
 
 {{outlet}}

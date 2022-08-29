@@ -6,7 +6,6 @@ export default class IndexRoute extends Route {
   async model() {
     const response = await fetch('/api/content');
     const { data } = await response.json();
-    console.log(data);
     return data;
   }
 }
